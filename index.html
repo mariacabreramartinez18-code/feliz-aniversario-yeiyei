@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Carta para Ti 💌</title>
+  <style>
+    body {
+      background-image: url('fondo_floral.jpg');
+      background-size: cover;
+      background-repeat: repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Georgia', serif;
+    }
+
+    #passwordContainer {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 15px 20px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      text-align: center;
+      font-family: 'Brush Script MT', cursive;
+      font-size: 1.3em;
+    }
+
+    #passwordContainer input {
+      font-size: 1em;
+      padding: 10px 15px;
+      border-radius: 25px;
+      border: 2px solid #b89b6e;
+      outline: none;
+      width: 200px;
+      text-align: center;
+    }
+
+    #passwordContainer button {
+      font-size: 1em;
+      padding: 7px 15px;
+      border-radius: 20px;
+      border: none;
+      background-color: #d4a373;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    #envelopeContainer {
+      position: relative;
+      width: 300px;
+      height: 200px;
+    }
+
+    #envelope {
+      width: 100%;
+      height: 100%;
+      background-image: url('sobre.png');
+      background-size: cover;
+      position: relative;
+      z-index: 2;
+      cursor: pointer;
+      pointer-events: none;
+    }
+
+    #letter {
+      width: 90%;
+      height: 120%;
+      background-color: #fdf8e1;
+      border: 1px solid #c9ada7;
+      position: absolute;
+      top: 100%;
+      left: 5%;
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: left;
+      border-radius: 8px;
+      font-family: 'Brush Script MT', cursive;
+      font-size: 1.8em;  /* aumentado */
+      line-height: 1.4;
+      color: #5b4636;
+      overflow: hidden;
+      white-space: pre-wrap;
+      z-index: 1;
+    }
+
+    .typewriter {
+      display: inline-block;
+      border-right: 2px solid #5b4636;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 4s steps(60, end) forwards, blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: #5b4636; }
+    }
+
+    .heart {
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      font-size: 1.8em;
+      color: #dd758a;
+      animation: floatUp 2.5s ease-in infinite;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-200px) scale(1.4); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="passwordContainer">
+    <p>Introduce la contraseña para abrir el sobre:</p>
+    <input type="password" id="password" placeholder="••••••••">
+    <button onclick="checkPassword()">Abrir</button>
+  </div>
+
+  <div id="envelopeContainer">
+    <div id="envelope" onclick="openEnvelope()"></div>
+    <div id="letter"></div>
+  </div>
+
+  <script>
+    const correctPassword = "11112023";
+    const messageText = `Mi Yeiyei,
+\nNo puedo expresar con palabras lo agradecida que estoy por estos dos años.
+\nEres, sin duda, lo más bonito de mi vida.
+\nTe amo con todo mi <3`;
+
+    function checkPassword() {
+      const pwd = document.getElementById("password").value;
+      if (pwd === correctPassword) {
+        document.getElementById("envelope").style.pointerEvents = "auto";
+        alert("¡Contraseña correcta! Haz clic en el sobre para abrirlo.");
+      } else {
+        alert("Contraseña incorrecta. Inténtalo de nuevo.");
+      }
+    }
+
+    function openEnvelope() {
+      // “Desplaza” la carta hacia arriba
+      const letterEl = document.getElementById("letter");
+      setTimeout(() => {
+        letterEl.style.top = "5%";
+        letterEl.innerHTML = `<span class="typewriter">${messageText}</span>`;
+        generateHearts();
+      }, 500);
+    }
+
+    function generateHearts() {
+      for (let i = 0; i < 8; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left = `${50 + (Math.random() * 40 - 20)}%`;
+        heart.style.animationDuration = `${2 + Math.random()}s`;
+        heart.innerHTML = "❤️";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 3000);
+      }
+    }
+  </script>
+
+</body>
+</html>
