@@ -1,207 +1,187 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carta secreta 💌</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background: #ffeaf0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      overflow: hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Carta para Ti 💌</title>
+    <style>
+        body {
+            background-image: url('https://i.imgur.com/TLqjQkX.jpg'); /* Fondo floral acuarela */
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Georgia', serif;
+        }
 
-    h1 {
-      margin-bottom: 20px;
-      color: #444;
-      text-align: center;
-    }
+        #passwordContainer {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.3em;
+        }
 
-    .envelope {
-      width: 200px;
-      height: 120px;
-      background: #f8f8f8;
-      border: 2px solid #ccc;
-      position: relative;
-      cursor: pointer;
-      overflow: hidden;
-      transform-style: preserve-3d;
-      transition: all 0.6s ease;
-    }
+        #passwordContainer input {
+            font-size: 1em;
+            padding: 10px 15px;
+            border-radius: 25px;
+            border: 2px solid #b89b6e;
+            outline: none;
+            width: 200px;
+            text-align: center;
+        }
 
-    .envelope.open {
-      transform: rotateX(-180deg);
-    }
+        #passwordContainer button {
+            font-size: 1em;
+            padding: 7px 15px;
+            border-radius: 20px;
+            border: none;
+            background-color: #d4a373;
+            cursor: pointer;
+            color: #fff;
+        }
 
-    .envelope .flap {
-      width: 200px;
-      height: 60px;
-      background: #ffb6c1;
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      transform-origin: bottom;
-      transform: rotateX(0deg);
-      transition: all 0.6s ease;
-    }
+        #envelopeContainer {
+            position: relative;
+            width: 300px;
+            height: 200px;
+        }
 
-    .envelope.open .flap {
-      transform: rotateX(-180deg);
-    }
+        #envelope {
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.imgur.com/e52V54Z.png'); /* Imagen del sobre antiguo */
+            background-size: cover;
+            position: relative;
+            z-index: 2;
+            cursor: pointer;
+            pointer-events: none;
+        }
 
-    .message {
-      display: none;
-      background: white;
-      padding: 20px;
-      margin-top: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      max-width: 300px;
-      font-size: 16px;
-      line-height: 1.5;
-      white-space: pre-wrap;
-      animation: typing 3s steps(40, end);
-      overflow: hidden;
-      border-right: 3px solid;
-    }
+        #flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background-image: url('https://i.imgur.com/rVZztWC.png'); /* Solapa del sobre */
+            background-size: cover;
+            transform-origin: top center;
+            transition: transform 1s ease-in-out;
+            z-index: 3;
+        }
 
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
+        #letter {
+            width: 85%;
+            height: 120%;
+            background-color: #fdf8e1;
+            border: 1px solid #c9ada7;
+            position: absolute;
+            top: 100%;
+            left: 7.5%;
+            padding: 15px;
+            box-sizing: border-box;
+            text-align: center;
+            border-radius: 5px;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.4em;
+            line-height: 1.4;
+            color: #5b4636;
+            overflow: hidden;
+            white-space: pre-wrap;
+            z-index: 1;
+        }
 
-    input {
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      margin-bottom: 10px;
-      width: 200px;
-      text-align: center;
-    }
+        .typewriter {
+            animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+            border-right: 2px solid;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+        }
 
-    button {
-      padding: 10px 20px;
-      background: #f06292;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
 
-    button:hover {
-      background: #ec407a;
-    }
+        @keyframes floatingHearts {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-200px); opacity: 0; }
+        }
 
-    .error {
-      color: #e91e63;
-      font-size: 14px;
-      margin-top: 10px;
-    }
-
-    /* Corazones flotantes */
-    .heart {
-      position: absolute;
-      bottom: 0;
-      width: 20px;
-      height: 20px;
-      font-size: 20px;
-      color: #ff4081;
-      opacity: 0.8;
-      animation: floatUp 4s linear infinite;
-    }
-
-    @keyframes floatUp {
-      0% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(-300px); opacity: 0; }
-    }
-  </style>
+        .heart {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            font-size: 1.5em;
+            color: rosybrown;
+            animation: floatingHearts 2s ease-in infinite;
+        }
+    </style>
 </head>
 <body>
 
-  <h1>Introduce la contraseña 🗝️</h1>
-  <input type="password" id="passwordInput" placeholder="Escribe aquí...">
-  <button onclick="checkPassword()">Desbloquear 💌</button>
-  <div class="error" id="errorMessage"></div>
+<div id="passwordContainer">
+    <p>Introduce la contraseña para abrir el sobre:</p>
+    <input type="password" id="password" placeholder="••••••••">
+    <button onclick="checkPassword()">Abrir</button>
+</div>
 
-  <div class="envelope" id="envelope">
-    <div class="flap"></div>
-  </div>
+<div id="envelopeContainer">
+    <div id="flap"></div>
+    <div id="envelope" onclick="openEnvelope()"></div>
+    <div id="letter"></div>
+</div>
 
-  <div class="message" id="message"></div>
-
-  <audio id="audio" src=""C:\Users\Maria\Desktop\pagina web yeiyei\Música emotiva #99 Historia romántica (No copyright).mp3""></audio>
-
-  <script>
+<script>
     const correctPassword = "11112023";
-    const envelope = document.getElementById("envelope");
-    const message = document.getElementById("message");
-    const errorMessage = document.getElementById("errorMessage");
-    const audio = document.getElementById("audio");
-
-    const messageText = `Mi Yeiyei,
-No puedo expresar con palabras lo agradecida que estoy por estos dos años.
-Eres, sin duda, lo más bonito de mi vida.
-Te amo con todo mi 💖`;
+    const letterMessage = `Mi Yeiyei,\nNo puedo expresar con palabras lo agradecida que estoy por estos dos años.\nEres, sin duda, lo más bonito de mi vida.\nTe amo con todo mi <3`;
 
     function checkPassword() {
-      const input = document.getElementById("passwordInput").value;
-      if (input === correctPassword) {
-        openEnvelope();
-      } else {
-        errorMessage.textContent = "Ups... esa no era. Intenta otra vez 💌";
-      }
+        const passwordInput = document.getElementById("password").value;
+        if (passwordInput === correctPassword) {
+            document.getElementById("envelope").style.pointerEvents = "auto";
+            alert("¡Contraseña correcta! Haz clic en el sobre para abrirlo.");
+        } else {
+            alert("Contraseña incorrecta. Intenta de nuevo.");
+        }
     }
 
     function openEnvelope() {
-      envelope.classList.add("open");
-      errorMessage.textContent = "";
-      setTimeout(() => {
-        message.style.display = "block";
-        addHearts();
-        playMusic();
-        typeMessage();
-      }, 800);
+        document.getElementById("flap").style.transform = "rotateX(180deg)";
+
+        setTimeout(() => {
+            const letter = document.getElementById("letter");
+            letter.style.top = "10%";
+            letter.innerHTML = `<span class="typewriter">${letterMessage}</span>`;
+            generateHearts();
+        }, 1000);
     }
 
-    function typeMessage() {
-      let i = 0;
-      message.textContent = "";
-      const interval = setInterval(() => {
-        message.textContent += messageText[i];
-        i++;
-        if (i > messageText.length) clearInterval(interval);
-      }, 50);
-    }
+    function generateHearts() {
+        for (let i = 0; i < 10; i++) {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.style.left = `${50 + Math.random() * 40 - 20}%`;
+            heart.style.animationDuration = `${1.5 + Math.random()}s`;
+            heart.innerHTML = "❤️";
+            document.body.appendChild(heart);
 
-    function addHearts() {
-      for (let i = 0; i < 20; i++) {
-        createHeart();
-      }
+            setTimeout(() => heart.remove(), 3000);
+        }
     }
-
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.textContent = "❤";
-      heart.style.left = `${Math.random() * 100}%`;
-      heart.style.animationDuration = `${Math.random() * 2 + 3}s`;
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 5000);
-    }
-
-    function playMusic() {
-      audio.volume = 0.3;
-      audio.play();
-    }
-  </script>
+</script>
 
 </body>
 </html>
