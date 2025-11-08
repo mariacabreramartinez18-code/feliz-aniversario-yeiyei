@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Primera prueba</title>
+<style>
+  body {
+    background-color: #fff7f8;
+    background-image: url('foto_perro.jpg'); /* Reemplaza por la imagen que quieras usar */
+    background-size: auto;
+    background-repeat: repeat;
+    font-family: 'Georgia', serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    color: #5b4636;
+    margin-bottom: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+
+  button {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  #yesBtn {
+    background-color: #d4a373;
+    color: white;
+  }
+
+  #noBtn {
+    background-color: #b56576;
+    color: white;
+    position: absolute;
+  }
+</style>
+</head>
+<body>
+
+<h1>¿Me quieres?</h1>
+<button id="yesBtn" onclick="location.href='index.html'">Sí 😍</button>
+<button id="noBtn" onmouseover="moveButton()">No 😢</button>
+
+<script>
+  function moveButton() {
+    const btn = document.getElementById('noBtn');
+    const randomX = Math.floor(Math.random() * (window.innerWidth - btn.clientWidth));
+    const randomY = Math.floor(Math.random() * (window.innerHeight - btn.clientHeight));
+    btn.style.left = randomX + 'px';
+    btn.style.top = randomY + 'px';
+  }
+</script>
+
+</body>
+</html>

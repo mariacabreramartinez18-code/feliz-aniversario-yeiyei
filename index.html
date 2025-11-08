@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>De tu quimica/informatica fav 💌</title>
+<style>
+  body {
+    background-image: url('fondo_floral.jpg');
+    background-size: cover;
+    background-repeat: repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Georgia', serif;
+  }
+
+  /* Panel de contraseña */
+  #passwordContainer {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px 25px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 1.3em;
+    transition: opacity 0.5s ease;
+  }
+
+  #passwordContainer input {
+    font-size: 1em;
+    padding: 10px 12px;
+    border-radius: 20px;
+    border: 2px solid #b89b6e;
+    outline: none;
+    width: 200px;
+    text-align: center;
+    margin-right: 10px;
+  }
+
+  #passwordContainer button {
+    font-size: 1em;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    background-color: #d4a373;
+    cursor: pointer;
+    color: #fff;
+  }
+
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para mi ingeniero informatico favorito 💌</title>
+<style>
+  body {
+    background-image: url('fondo_floral.jpg');
+    background-size: cover;
+    background-repeat: repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Georgia', serif;
+  }
+
+  /* Panel de contraseña */
+  #passwordContainer {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px 25px;
+    border-radius: 15px;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 1.3em;
+    transition: opacity 0.5s ease;
+  }
+
+  #passwordContainer input {
+    font-size: 1em;
+    padding: 10px 12px;
+    border-radius: 20px;
+    border: 2px solid #b89b6e;
+    outline: none;
+    width: 200px;
+    text-align: center;
+    margin-right: 10px;
+  }
+
+  #passwordContainer button {
+    font-size: 1em;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    background-color: #d4a373;
+    cursor: pointer;
+    color: #fff;
+  }
+
+  /* Carta */
+  #letter {
+    width: 80%;
+    max-width: 350px;
+    min-height: 150px;
+    background-color: #fdf8e1;
+    border: 1px solid #c9ada7;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 20px;
+    box-sizing: border-box;
+    text-align: left;
+    border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+    line-height: 1.4;
+    color: #5b4636;
+    overflow: hidden;
+    white-space: pre-wrap;
+    z-index: 5;
+    display: none;
+  }
+
+  /* Animación de créditos */
+  .scrolling-text {
+    display: block;
+    transform: translateY(100%);
+    animation: scrollUp 4s ease-out forwards;
+  }
+
+  @keyframes scrollUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0%); }
+  }
+
+  /* Sobre */
+  #envelopeContainer {
+    position: absolute;
+    bottom: 10%; 
+    width: 500px;
+    height: 350px;
+  }
+
+  #envelope {
+    width: 100%;
+    height: 100%;
+    background-image: url('sobre.png'); /* sobre cerrado por defecto */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    position: relative;
+    z-index: 3;
+    cursor: pointer;
+    pointer-events: none;
+  }
+
+  /* Corazones flotantes */
+  .heart {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    font-size: 1.8em;
+    color: #dd758a;
+    animation: floatUp 3s ease-in infinite;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-250px) scale(1.5); opacity: 0; }
+  }
+#hintBox {
+  position: absolute;
+  right: 5%;
+  top: 20%;
+  background-color: rgba(255, 248, 225, 0.9);
+  border: 2px solid #b89b6e;
+  border-radius: 12px;
+  padding: 15px;
+  width: 250px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #5b4636;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  font-size: 0.9em;
+  line-height: 1.4;
+}
+
+</style>
+</head>
+<body>
+<body>
+
+<div id="hintBox">
+  <h3>🕵️‍♀️ Pista</h3>
+  <p>“Fue el día en que la pista brilló,  
+  no por las luces del club…  
+  sino porque tú entraste.  
+  Ese número marca  
+  el inicio del bailoteo y del ‘nosotros’ 🪩💘”</p>
+</div>
+
+<div id="passwordContainer">
+  <p>Introduce la contraseña para abrir el sobre:</p>
+  <input type="password" id="password" placeholder="••••••••">
+  <button onclick="checkPassword()">Abrir</button>
+</div>
+
+<div id="letter"></div>
+
+<div id="envelopeContainer">
+  <div id="envelope"></div>
+</div>
+
+<script>
+  const correctPassword = "11112023";
+  const messageText = `Mi Yeiyei,
+No puedo expresar con palabras lo agradecida que estoy por estos dos años.
+Eres, sin duda, lo más bonito de mi vida.
+Te amo con todo mi <3`;
+
+  function checkPassword() {
+    const pwd = document.getElementById("password").value;
+    if (pwd === correctPassword) {
+      // Ocultar panel de contraseña
+      const panel = document.getElementById("passwordContainer");
+      panel.style.opacity = "0";
+      setTimeout(() => panel.style.display = "none", 500);
+
+      // Cambiar sobre cerrado por sobre abierto
+      const envelope = document.getElementById("envelope");
+      envelope.style.backgroundImage = "url('sobre_abierto.png')";
+      envelope.style.pointerEvents = "auto";
+
+      // Mostrar carta después de un pequeño retraso (0.1s)
+      setTimeout(() => {
+        const letterEl = document.getElementById("letter");
+        letterEl.style.display = "block";
+        letterEl.innerHTML = `<span class="scrolling-text">${messageText}</span>`;
+        generateHearts(20); // más corazones
+      }, 500);
+
+    } else {
+      alert("Contraseña incorrecta. Inténtalo de nuevo.");
+    }
+  }
+
+  function openEnvelope() {
+    // Aquí se puede agregar animación extra si deseas
+  }
+
+  function generateHearts(count) {
+    for (let i = 0; i < count; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = `${50 + (Math.random() * 60 - 30)}%`;
+      heart.style.animationDuration = `${2 + Math.random() * 2}s`;
+      heart.innerHTML = "❤️";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }
+  }
+</script>
+
+</body>
+</html>
